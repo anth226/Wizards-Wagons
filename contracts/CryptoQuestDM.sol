@@ -23,7 +23,8 @@ contract CryptoQuestDM is ERC721Enumerable, Ownable {
   uint256 public nftPerAddressLimit = 10;
   uint256 public preSaleDate = 1638738000;
   uint256 public preSaleEndDate = 1638824400;
-  uint256 public publicSaleDate = 1638842400;
+  // uint256 public publicSaleDate = 1638842400;
+	uint256 public publicSaleDate = 0;
   bool public paused = false;
   bool public revealed = false;
   mapping(address => bool) whitelistedAddresses;
@@ -112,6 +113,7 @@ contract CryptoQuestDM is ERC721Enumerable, Ownable {
     uint256 ownerMintedCount = addressMintedBalance[msg.sender];
 
     //Do some validations depending on which step of the sale we are in
+		require(publicSaleDate != 0, "Public sale date is not set yet");
     block.timestamp < publicSaleDate
       ? presaleValidations(ownerMintedCount, _mintAmount, supply)
       : publicsaleValidations(ownerMintedCount, _mintAmount);
