@@ -247,7 +247,7 @@ contract CryptoQuestDM is ERC721Enumerable, Ownable {
     preSaleEndDate = _preSaleEndDate;
   }
 
-  function setPublicSaleDate(uint256 _publicSaleDate) public onlyOwner {
+  function setPublicSaleDate(uint256 _publicSaleDate) internal onlyOwner {
     publicSaleDate = _publicSaleDate;
   }
 
@@ -262,5 +262,13 @@ contract CryptoQuestDM is ERC721Enumerable, Ownable {
       ""
     );
     require(success);
+  }
+
+  function toggleSale(uint256 currentTimeStamp) public onlyOwner {
+    setPublicSaleDate(currentTimeStamp);
+  }
+
+  function totalMint() public view onlyOwner returns (uint256) {
+    return totalSupply();
   }
 }
