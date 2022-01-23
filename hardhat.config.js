@@ -19,7 +19,7 @@ module.exports = {
     hardhat: {},
     matic: {
       url: 'https://rpc-mumbai.maticvigil.com',
-      accounts: ['9ebe0328183bf8bda6db7565665ca8406ccefc0e588178c6fd5b85fac0210dac']
+      accounts: ['']
     },
   },
 };
